@@ -8,6 +8,7 @@ using NzbDrone.Core.ImportLists.ImportExclusions;
 using NzbDrone.Core.ImportLists.ImportListMovies;
 using NzbDrone.Core.Messaging.Commands;
 using NzbDrone.Core.Movies;
+using NzbDrone.Core.Tags;
 
 namespace NzbDrone.Core.ImportLists
 {
@@ -20,6 +21,7 @@ namespace NzbDrone.Core.ImportLists
         private readonly IAddMovieService _addMovieService;
         private readonly IConfigService _configService;
         private readonly IImportExclusionsService _exclusionService;
+        private readonly ITagService _tagService;
 
         public ImportListSyncService(IImportListFactory importListFactory,
                                       IFetchAndParseImportList listFetcherAndParser,
@@ -27,6 +29,7 @@ namespace NzbDrone.Core.ImportLists
                                       IAddMovieService addMovieService,
                                       IConfigService configService,
                                       IImportExclusionsService exclusionService,
+                                      ITagService tagService,
                                       Logger logger)
         {
             _importListFactory = importListFactory;
@@ -36,6 +39,7 @@ namespace NzbDrone.Core.ImportLists
             _exclusionService = exclusionService;
             _logger = logger;
             _configService = configService;
+            _tagService = tagService;
         }
 
         private void SyncList(ImportListDefinition definition)
@@ -181,6 +185,7 @@ namespace NzbDrone.Core.ImportLists
 
             // TODO use AllMovieTmdbIds here?
             var moviesInLibrary = _movieService.GetAllMovies();
+            var tag = _tagService.Add(new Tag { Label = "cleanlibrary" });
             foreach (var movie in moviesInLibrary)
             {
                 var movieExists = listMovies.Any(c => c.TmdbId == movie.TmdbId || c.ImdbId == movie.ImdbId);
@@ -191,9 +196,12 @@ namespace NzbDrone.Core.ImportLists
                     {
                         case "logOnly":
                             _logger.Info("{0} was in your library, but not found in your lists --> You might want to unmonitor or remove it", movie);
+                            movie.Tags.Add(tag.Id);
+                            moviesToUpdate.Add(movie);
                             break;
                         case "keepAndUnmonitor":
                             _logger.Info("{0} was in your library, but not found in your lists --> Keeping in library but Unmonitoring it", movie);
+                            movie.Tags.Add(tag.Id);
                             movie.Monitored = false;
                             moviesToUpdate.Add(movie);
                             break;
@@ -208,6 +216,11 @@ namespace NzbDrone.Core.ImportLists
                         default:
                             break;
                     }
+                }
+                else if (movie.Tags.Contains(tag.Id))
+                {
+                    movie.Tags.Remove(tag.Id);
+                    moviesToUpdate.Add(movie);
                 }
             }
 
