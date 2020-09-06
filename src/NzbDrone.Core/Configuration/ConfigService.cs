@@ -137,6 +137,12 @@ namespace NzbDrone.Core.Configuration
             set { SetValue("ImportExclusions", value); }
         }
 
+        public HashSet<int> CleanLibraryTags
+        {
+            get { return GetValueHashSet("CleanLibraryTags"); }
+            set { SetValue("CleanLibraryTags", value); }
+        }
+
         public TMDbCountryCode CertificationCountry
         {
             get { return GetValueEnum("CertificationCountry", TMDbCountryCode.US); }
@@ -458,6 +464,13 @@ namespace NzbDrone.Core.Configuration
             return Convert.ToInt32(GetValue(key, defaultValue));
         }
 
+        private HashSet<int> GetValueHashSet(string key, int defaultValue = 0)
+        {
+            var tags = new HashSet<int>();
+            tags.Add(defaultValue);
+            return tags;
+        }
+
         private T GetValueEnum<T>(string key, T defaultValue)
         {
             return (T)Enum.Parse(typeof(T), GetValue(key, defaultValue), true);
@@ -493,6 +506,11 @@ namespace NzbDrone.Core.Configuration
         }
 
         private void SetValue(string key, int value)
+        {
+            SetValue(key, value.ToString());
+        }
+
+        private void SetValue(string key, HashSet<int> value)
         {
             SetValue(key, value.ToString());
         }
