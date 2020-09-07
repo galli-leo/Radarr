@@ -80,16 +80,16 @@ function ImportListOptions(props) {
             </FormGroup>
 
             <FormGroup>
-                <FormLabel>{translate('CleanLibraryTags')}</FormLabel>
+              <FormLabel>{translate('CleanLibraryTags')}</FormLabel>
 
-                <FormInputGroup
-                  type={inputTypes.TAG}
-                  name="cleanLibraryTags"
-                  helpText={translate('TagsHelpText')}
-                  {...settings.cleanLibraryTags}
-                  onChange={onInputChange}
-                />
-              </FormGroup>
+              <FormInputGroup
+                type={inputTypes.TAG}
+                name="cleanLibraryTags"
+                helpText={translate('TagsHelpText')}
+                {...settings.cleanLibraryTags}
+                onChange={onInputChange}
+              />
+            </FormGroup>
           </Form>
       }
     </FieldSet>

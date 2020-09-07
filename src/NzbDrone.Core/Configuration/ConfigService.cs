@@ -65,11 +65,22 @@ namespace NzbDrone.Core.Configuration
                     continue;
                 }
 
-                var equal = configValue.Value.ToString().Equals(currentValue.ToString());
-
-                if (!equal)
+                if (configValue.Key.Equals("CleanLibraryTags"))
                 {
-                    SetValue(configValue.Key, configValue.Value.ToString());
+                    var equal = ConvertToString((HashSet<int>)configValue.Value).Equals(ConvertToString((HashSet<int>)currentValue));
+                    if (!equal)
+                    {
+                        SetValue(configValue.Key, ConvertToString((HashSet<int>)configValue.Value));
+                    }
+                }
+                else
+                {
+                    var equal = configValue.Value.ToString().Equals(currentValue.ToString());
+
+                    if (!equal)
+                    {
+                        SetValue(configValue.Key, configValue.Value.ToString());
+                    }
                 }
             }
 
@@ -464,11 +475,25 @@ namespace NzbDrone.Core.Configuration
             return Convert.ToInt32(GetValue(key, defaultValue));
         }
 
-        private HashSet<int> GetValueHashSet(string key, int defaultValue = 0)
+        private HashSet<int> GetValueHashSet(string key)
         {
-            var tags = new HashSet<int>();
-            tags.Add(defaultValue);
-            return tags;
+            string t1 = GetValue(key, string.Empty);
+            if (t1.Equals(string.Empty) || t1.Equals("[]"))
+            {
+                return new HashSet<int>();
+            }
+
+            return new HashSet<int>(Array.ConvertAll(t1.Replace("[", "").Replace("]", "").Split(' '), s => int.Parse(s)));
+        }
+
+        private string ConvertToString(HashSet<int> value)
+        {
+            return "[" + string.Join(" ", value.ToArray()) + "]";
+        }
+
+        private void SetValue(string key, HashSet<int> value)
+        {
+            SetValue(key, ConvertToString(value));
         }
 
         private T GetValueEnum<T>(string key, T defaultValue)
@@ -506,11 +531,6 @@ namespace NzbDrone.Core.Configuration
         }
 
         private void SetValue(string key, int value)
-        {
-            SetValue(key, value.ToString());
-        }
-
-        private void SetValue(string key, HashSet<int> value)
         {
             SetValue(key, value.ToString());
         }
