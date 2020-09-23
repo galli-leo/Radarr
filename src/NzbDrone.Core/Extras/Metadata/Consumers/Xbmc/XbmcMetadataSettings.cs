@@ -41,6 +41,9 @@ namespace NzbDrone.Core.Extras.Metadata.Consumers.Xbmc
         [FieldDefinition(4, Label = "Use Movie.nfo", Type = FieldType.Checkbox, HelpText = "Radarr will write metadata to movie.nfo instead of the default <movie-filename>.nfo")]
         public bool UseMovieNfo { get; set; }
 
+        [FieldDefinition(4, Label = "Use <image>.jpg", Type = FieldType.Checkbox, HelpText = "Radarr will write images to <image>.jpg instead of the default <movie-filename>-<image>.jpg")]
+        public bool UseMovieImages { get; set; }
+
         public bool IsValid => true;
 
         public NzbDroneValidationResult Validate()
