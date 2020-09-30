@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using NLog;
 using NzbDrone.Common.Disk;
 using NzbDrone.Common.Extensions;
+using NzbDrone.Core.DiskSpace;
 using NzbDrone.Core.Download;
 using NzbDrone.Core.Extras;
 using NzbDrone.Core.History;
@@ -64,8 +66,22 @@ namespace NzbDrone.Core.MediaFiles.MovieImport
 
             foreach (var importDecision in qualifiedImports.OrderByDescending(e => e.LocalMovie.Size))
             {
+                var isExistingFileAndChanged = false;
                 var localMovie = importDecision.LocalMovie;
                 var oldFiles = new List<MovieFile>();
+
+                // Check if we are importing an existing file so we can update it
+                if (localMovie.ExistingFile)
+                {
+                    // Same file name as current movie file, has file size changed?
+                    if (localMovie.Size == localMovie.Movie.MovieFile.Size)
+                    {
+                        //Same size, so skip it
+                        continue;
+                    }
+
+                    isExistingFileAndChanged = true;
+                }
 
                 try
                 {
@@ -78,6 +94,12 @@ namespace NzbDrone.Core.MediaFiles.MovieImport
                     }
 
                     var movieFile = new MovieFile();
+                    if (isExistingFileAndChanged)
+                    {
+                        // dealing with existing file, so use existing MovieFile values, and they will be updated
+                        movieFile = localMovie.Movie.MovieFile;
+                    }
+
                     movieFile.DateAdded = DateTime.UtcNow;
                     movieFile.MovieId = localMovie.Movie.Id;
                     movieFile.Path = localMovie.Path.CleanFilePath();
@@ -128,7 +150,16 @@ namespace NzbDrone.Core.MediaFiles.MovieImport
                         movieFile.RelativePath = localMovie.Movie.Path.GetRelativePath(movieFile.Path);
                     }
 
-                    _mediaFileService.Add(movieFile);
+                    if (isExistingFileAndChanged)
+                    {
+                        // If existing and its changed, update file instead of adding
+                        _mediaFileService.Update(movieFile);
+                    }
+                    else
+                    {
+                        _mediaFileService.Add(movieFile);
+                    }
+
                     importResults.Add(new ImportResult(importDecision));
 
                     if (newDownload)
