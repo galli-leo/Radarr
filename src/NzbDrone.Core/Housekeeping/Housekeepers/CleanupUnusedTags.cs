@@ -32,7 +32,7 @@ namespace NzbDrone.Core.Housekeeping.Housekeepers
                 foreach (var t1 in cleanLibraryTags)
                 {
                     var cleanLibraryTagsList = string.Empty;
-                    if (!(t1.Equals(string.Empty) || t1.Equals("[]")))
+                    if (!(string.IsNullOrEmpty(t1) || t1.Equals("[]")))
                     {
                         cleanLibraryTagsList = string.Join(",", Array.ConvertAll(t1.Replace("[", "").Replace("]", "").Split(' '), s => int.Parse(s)));
                     }
