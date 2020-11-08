@@ -13,6 +13,7 @@ using NzbDrone.Core.MediaFiles.MediaInfo;
 using NzbDrone.Core.Movies;
 using NzbDrone.Core.Movies.Translations;
 using NzbDrone.Core.Parser;
+using NzbDrone.Core.Parser.Model;
 using NzbDrone.Core.Qualities;
 
 namespace NzbDrone.Core.Organizer
@@ -83,6 +84,12 @@ namespace NzbDrone.Core.Organizer
 
         public string BuildFileName(Movie movie, MovieFile movieFile, NamingConfig namingConfig = null, List<CustomFormat> customFormats = null)
         {
+            var localMovie = new LocalMovie() { Path = movieFile.OriginalFilePath };
+            if (localMovie.IsImmutableSubdirectory)
+            {
+                return Path.Combine(localMovie.SubdirectoryName, Path.GetFileNameWithoutExtension(localMovie.Path));
+            }
+
             if (namingConfig == null)
             {
                 namingConfig = _namingConfigService.GetConfig();
