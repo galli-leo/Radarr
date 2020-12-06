@@ -21,7 +21,7 @@ namespace NzbDrone.Core.Movies
             Translations = new List<MovieTranslation>();
             Recommendations = new List<int>();
             OriginalLanguage = Language.English;
-            Ratings = new Ratings();
+            Ratings = new List<Ratings>();
         }
 
         public int TmdbId { get; set; }
@@ -41,7 +41,7 @@ namespace NzbDrone.Core.Movies
         public string Website { get; set; }
         public string Path { get; set; }
         public int Year { get; set; }
-        public Ratings Ratings { get; set; }
+        public List<Ratings> Ratings { get; set; }
         public List<string> Genres { get; set; }
 
         public MovieCollection Collection { get; set; }

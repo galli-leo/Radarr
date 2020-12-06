@@ -68,7 +68,7 @@ namespace NzbDrone.Core.Notifications.Discord
                         break;
                     case DiscordGrabFieldType.Rating:
                         discordField.Name = "Rating";
-                        discordField.Value = message.Movie.Ratings.Value.ToString();
+                        discordField.Value = message.Movie.Ratings.FirstOrDefault()?.Value.ToString() ?? string.Empty;
                         break;
                     case DiscordGrabFieldType.Genres:
                         discordField.Name = "Genres";
@@ -155,7 +155,7 @@ namespace NzbDrone.Core.Notifications.Discord
                         break;
                     case DiscordImportFieldType.Rating:
                         discordField.Name = "Rating";
-                        discordField.Value = message.Movie.Ratings.Value.ToString();
+                        discordField.Value = message.Movie.Ratings.FirstOrDefault()?.Value.ToString() ?? string.Empty;
                         break;
                     case DiscordImportFieldType.Genres:
                         discordField.Name = "Genres";

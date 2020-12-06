@@ -13,6 +13,7 @@ namespace NzbDrone.Core.ImportLists.ImportListMovies
             Images = new List<MediaCover.MediaCover>();
             Genres = new List<string>();
             Translations = new List<MovieTranslation>();
+            Ratings = new List<Ratings>();
         }
 
         public int TmdbId { get; set; }
@@ -26,7 +27,7 @@ namespace NzbDrone.Core.ImportLists.ImportListMovies
         public List<MediaCover.MediaCover> Images { get; set; }
         public string Website { get; set; }
         public int Year { get; set; }
-        public Ratings Ratings { get; set; }
+        public List<Ratings> Ratings { get; set; }
         public List<string> Genres { get; set; }
 
         public MovieCollection Collection { get; set; }

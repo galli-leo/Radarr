@@ -162,7 +162,7 @@ namespace NzbDrone.Api.Movies
                 Added = model.Added,
                 AddOptions = model.AddOptions,
                 AlternativeTitles = model.AlternativeTitles.ToResource(),
-                Ratings = model.Ratings,
+                Ratings = model.Ratings.FirstOrDefault(),
                 MovieFile = movieFile,
                 YouTubeTrailerId = model.YouTubeTrailerId,
                 Studio = model.Studio
@@ -221,7 +221,7 @@ namespace NzbDrone.Api.Movies
                 AddOptions = resource.AddOptions,
 
                 //AlternativeTitles = resource.AlternativeTitles,
-                Ratings = resource.Ratings,
+                Ratings = new List<Ratings> { resource.Ratings },
                 YouTubeTrailerId = resource.YouTubeTrailerId,
                 Studio = resource.Studio
             };

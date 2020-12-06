@@ -195,7 +195,7 @@ namespace NzbDrone.Core.MetadataSource.SkyHook
             var certificationCountry = _configService.CertificationCountry.ToString();
 
             movie.Certification = resource.Certifications.FirstOrDefault(m => m.Country == certificationCountry)?.Certification;
-            movie.Ratings = resource.Ratings.Select(MapRatings).FirstOrDefault() ?? new Ratings();
+            movie.Ratings = resource.Ratings.Select(MapRatings).ToList();
             movie.Genres = resource.Genres;
             movie.Recommendations = resource.Recommendations?.Select(r => r.TmdbId).ToList() ?? new List<int>();
 
@@ -506,11 +506,18 @@ namespace NzbDrone.Core.MetadataSource.SkyHook
                 return new Ratings();
             }
 
-            return new Ratings
+            if (Enum.TryParse(rating.Origin, out RatingOrigin ratingOrigin) && Enum.TryParse(rating.Type, out RatingType ratingType))
             {
-                Votes = rating.Count,
-                Value = rating.Value
-            };
+                return new Ratings
+                {
+                    Votes = rating.Count,
+                    Value = rating.Value,
+                    Origin = ratingOrigin,
+                    Type = ratingType,
+                };
+            }
+
+            return new Ratings();
         }
 
         private static MediaCover.MediaCover MapImage(ImageResource arg)

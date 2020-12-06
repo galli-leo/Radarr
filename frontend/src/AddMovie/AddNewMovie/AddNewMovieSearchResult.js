@@ -136,7 +136,7 @@ class AddNewMovieSearchResult extends Component {
             <div>
               <Label size={sizes.LARGE}>
                 <HeartRating
-                  rating={ratings.value}
+                  ratings={ratings}
                   iconSize={13}
                 />
               </Label>
@@ -217,7 +217,7 @@ AddNewMovieSearchResult.propTypes = {
   studio: PropTypes.string,
   status: PropTypes.string.isRequired,
   overview: PropTypes.string,
-  ratings: PropTypes.object.isRequired,
+  ratings: PropTypes.arrayOf(PropTypes.object).isRequired,
   folder: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.object).isRequired,
   isExistingMovie: PropTypes.bool.isRequired,

@@ -34,7 +34,7 @@ namespace Radarr.Api.V3.ImportLists
         public string Folder { get; set; }
         public string Certification { get; set; }
         public List<string> Genres { get; set; }
-        public Ratings Ratings { get; set; }
+        public List<Ratings> Ratings { get; set; }
         public MovieCollection Collection { get; set; }
         public bool IsExcluded { get; set; }
         public bool IsExisting { get; set; }

@@ -332,7 +332,7 @@ class MovieIndexRow extends Component {
                   className={styles[name]}
                 >
                   <HeartRating
-                    rating={ratings.value}
+                    ratings={ratings}
                   />
                 </VirtualTableRowCell>
               );
@@ -455,7 +455,7 @@ MovieIndexRow.propTypes = {
   path: PropTypes.string.isRequired,
   sizeOnDisk: PropTypes.number.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  ratings: PropTypes.object.isRequired,
+  ratings: PropTypes.arrayOf(PropTypes.object).isRequired,
   certification: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.number).isRequired,
   showSearchAction: PropTypes.bool.isRequired,
@@ -477,7 +477,8 @@ MovieIndexRow.propTypes = {
 
 MovieIndexRow.defaultProps = {
   genres: [],
-  tags: []
+  tags: [],
+  ratings: []
 };
 
 export default MovieIndexRow;

@@ -68,7 +68,7 @@ namespace Radarr.Api.V3.Movies
         public HashSet<int> Tags { get; set; }
         public DateTime Added { get; set; }
         public AddMovieOptions AddOptions { get; set; }
-        public Ratings Ratings { get; set; }
+        public List<Ratings> Ratings { get; set; }
         public MovieFileResource MovieFile { get; set; }
         public MovieCollection Collection { get; set; }
     }

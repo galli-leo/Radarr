@@ -1,4 +1,4 @@
-﻿using NzbDrone.Core.Datastore;
+using NzbDrone.Core.Datastore;
 
 namespace NzbDrone.Core.Movies
 {
@@ -6,5 +6,22 @@ namespace NzbDrone.Core.Movies
     {
         public int Votes { get; set; }
         public decimal Value { get; set; }
+        public RatingOrigin Origin { get; set; }
+        public RatingType Type { get; set; }
+    }
+
+    public enum RatingOrigin
+    {
+        Tmdb,
+        Imdb,
+        Trakt,
+        Metacritic,
+        RottenTomatos
+    }
+
+    public enum RatingType
+    {
+        User,
+        Critic
     }
 }

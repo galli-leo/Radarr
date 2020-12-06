@@ -144,9 +144,9 @@ namespace NzbDrone.Core.Extras.Metadata.Consumers.Xbmc
 
                     details.Add(new XElement("title", movieTranslation?.Title ?? movie.Title));
 
-                    if (movie.Ratings != null && movie.Ratings.Votes > 0)
+                    if (movie.Ratings.Count > 0 && movie.Ratings.First().Votes > 0)
                     {
-                        details.Add(new XElement("rating", movie.Ratings.Value));
+                        details.Add(new XElement("rating", movie.Ratings.First().Value));
                     }
 
                     details.Add(new XElement("plot", movieTranslation?.Overview ?? movie.Overview));
