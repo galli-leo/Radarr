@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace NzbDrone.Core.Notifications.Plex.Server
@@ -9,6 +9,8 @@ namespace NzbDrone.Core.Notifications.Plex.Server
         public string Id { get; set; }
 
         public string Title { get; set; }
+
+        public int Year { get; set; }
     }
 
     public class PlexSectionResponse

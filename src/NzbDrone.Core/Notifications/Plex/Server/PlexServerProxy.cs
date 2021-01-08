@@ -14,10 +14,10 @@ namespace NzbDrone.Core.Notifications.Plex.Server
     {
         List<PlexSection> GetMovieSections(PlexServerSettings settings);
         void Update(int sectionId, PlexServerSettings settings);
-        void UpdateMovie(int metadataId, PlexServerSettings settings);
+        void UpdateMovie(string metadataId, PlexServerSettings settings);
         string Version(PlexServerSettings settings);
         List<PlexPreference> Preferences(PlexServerSettings settings);
-        int? GetMetadataId(int sectionId, string imdbId, string language, PlexServerSettings settings);
+        string GetMetadataId(int sectionId, string imdbId, string language, PlexServerSettings settings);
     }
 
     public class PlexServerProxy : IPlexServerProxy

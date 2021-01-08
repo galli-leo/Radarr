@@ -1,0 +1,173 @@
+﻿{
+  "MediaContainer": {
+    "librarySectionID": "watchlist",
+    "librarySectionTitle": "Watchlist",
+    "offset": 0,
+    "totalSize": 3,
+    "identifier": "tv.plex.provider.metadata",
+    "size": 3,
+    "Metadata": [
+      {
+        "art": "https://image.tmdb.org/t/p/original/hNCqkXbWd40eftqSdjq8TmV7Mqr.jpg",
+        "banner": "https://assets.fanart.tv/fanart/movies/329865/moviebanner/arrival-596230fdca0c2.jpg",
+        "guid": "plex://movie/5d776b83fb0d55001f56a04b",
+        "key": "/library/metadata/5d776b83fb0d55001f56a04b",
+        "rating": 9.4,
+        "ratingKey": "5d776b83fb0d55001f56a04b",
+        "studio": "FilmNation Entertainment",
+        "type": "movie",
+        "thumb": "https://image.tmdb.org/t/p/original/1AnfXMG9PPMVjwXcHW6JLSJUbPo.jpg",
+        "addedAt": 1478822400,
+        "duration": 6960000,
+        "slug": "arrival-2016",
+        "userState": false,
+        "title": "Arrival",
+        "originallyAvailableAt": "2016-11-11T00:00:00Z",
+        "year": 2016,
+        "audienceRating": 8.2,
+        "audienceRatingImage": "rottentomatoes://image.rating.upright",
+        "ratingImage": "rottentomatoes://image.rating.ripe",
+        "playableKey": "provider://tv.plex.provider.vod/library/metadata/5fc91c1359365b002fe4b0e7",
+        "Image": [
+          {
+            "alt": "Arrival",
+            "type": "banner",
+            "url": "https://assets.fanart.tv/fanart/movies/329865/moviebanner/arrival-596230fdca0c2.jpg"
+          },
+          {
+            "alt": "Arrival",
+            "type": "coverArt",
+            "url": "https://metadata-static.plex.tv/2/gracenote/2b5f5ad790e548d716b3d02bff9c7d6c.jpg"
+          },
+          {
+            "alt": "Arrival",
+            "type": "coverPoster",
+            "url": "https://metadata-static.plex.tv/3/gracenote/353cbb4c08885d411cfbc7bd3709c464.jpg"
+          },
+          {
+            "alt": "Arrival",
+            "type": "coverSquare",
+            "url": "https://metadata-static.plex.tv/f/gracenote/fc671b164e0c7362d6e4aa4dec13bcba.jpg"
+          },
+          {
+            "alt": "Arrival",
+            "type": "snapshot",
+            "url": "https://metadata-static.plex.tv/c/gracenote/c923bc81fcb56f66402cc586a1c5b0c5.jpg"
+          },
+          {
+            "alt": "Arrival",
+            "type": "background",
+            "url": "https://metadata-static.plex.tv/f/gracenote/fc483ef431578abd195ff8ad05a6fb83.jpg"
+          }
+        ]
+      },
+      {
+        "art": "https://image.tmdb.org/t/p/original/g8DUZrgCfXRJ5CazfZ5X7qCWcvZ.jpg",
+        "banner": "https://assets.fanart.tv/fanart/movies/274854/moviebanner/the-last-witch-hunter-563635b3dc9b2.jpg",
+        "guid": "plex://movie/5d776aea96b655001fdfd70f",
+        "key": "/library/metadata/5d776aea96b655001fdfd70f",
+        "rating": 1.8,
+        "ratingKey": "5d776aea96b655001fdfd70f",
+        "studio": "NeoReel",
+        "type": "movie",
+        "thumb": "https://image.tmdb.org/t/p/original/qXvOpA2nhK5HQ6I95sN3nnMtfjH.jpg",
+        "addedAt": 1445558400,
+        "duration": 6360000,
+        "slug": "the-last-witch-hunter",
+        "userState": false,
+        "title": "The Last Witch Hunter",
+        "originallyAvailableAt": "2015-10-23T00:00:00Z",
+        "year": 2015,
+        "audienceRating": 4.3,
+        "audienceRatingImage": "rottentomatoes://image.rating.spilled",
+        "ratingImage": "rottentomatoes://image.rating.rotten",
+        "playableKey": "provider://tv.plex.provider.vod/library/metadata/5fe9655e14ebbd002dd69fc6",
+        "Image": [
+          {
+            "alt": "The Last Witch Hunter",
+            "type": "banner",
+            "url": "https://assets.fanart.tv/fanart/movies/274854/moviebanner/the-last-witch-hunter-563635b3dc9b2.jpg"
+          },
+          {
+            "alt": "The Last Witch Hunter",
+            "type": "coverArt",
+            "url": "https://metadata-static.plex.tv/0/gracenote/01d7ce57af6ac4501695ac747176165a.jpg"
+          },
+          {
+            "alt": "The Last Witch Hunter",
+            "type": "coverPoster",
+            "url": "https://metadata-static.plex.tv/6/gracenote/6337560c918bde976551022df5a34184.jpg"
+          },
+          {
+            "alt": "The Last Witch Hunter",
+            "type": "coverSquare",
+            "url": "https://metadata-static.plex.tv/4/gracenote/4237209de7a4bafd372a5cf2adca9f5d.jpg"
+          },
+          {
+            "alt": "The Last Witch Hunter",
+            "type": "snapshot",
+            "url": "https://metadata-static.plex.tv/b/gracenote/b85d56032001427ec2a11d759c6b6070.jpg"
+          },
+          {
+            "alt": "The Last Witch Hunter",
+            "type": "background",
+            "url": "https://metadata-static.plex.tv/f/gracenote/fcab3c1fb46c4e78764847e98416f1d9.jpg"
+          }
+        ]
+      },
+      {
+        "art": "https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+        "banner": "https://assets.fanart.tv/fanart/movies/299534/moviebanner/avengers-endgame-5db38be216c84.jpg",
+        "guid": "plex://movie/5d776b37fb0d55001f56046d",
+        "key": "/library/metadata/5d776b37fb0d55001f56046d",
+        "rating": 9.4,
+        "ratingKey": "5d776b37fb0d55001f56046d",
+        "studio": "Marvel Studios",
+        "type": "movie",
+        "thumb": "https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+        "addedAt": 1556236800,
+        "duration": 10860000,
+        "slug": "avengers-endgame",
+        "userState": false,
+        "title": "Avengers: Endgame",
+        "originallyAvailableAt": "2019-04-26T00:00:00Z",
+        "year": 2019,
+        "audienceRating": 9,
+        "audienceRatingImage": "rottentomatoes://image.rating.upright",
+        "ratingImage": "rottentomatoes://image.rating.ripe",
+        "Image": [
+          {
+            "alt": "Avengers: Endgame",
+            "type": "banner",
+            "url": "https://assets.fanart.tv/fanart/movies/299534/moviebanner/avengers-endgame-5db38be216c84.jpg"
+          },
+          {
+            "alt": "Avengers: Endgame",
+            "type": "coverArt",
+            "url": "https://metadata-static.plex.tv/4/gracenote/407aa1d968f95c01245b80da0dc84a6e.jpg"
+          },
+          {
+            "alt": "Avengers: Endgame",
+            "type": "coverPoster",
+            "url": "https://metadata-static.plex.tv/4/gracenote/410300a21d4e1f3a9a79267e8d7dec0e.jpg"
+          },
+          {
+            "alt": "Avengers: Endgame",
+            "type": "coverSquare",
+            "url": "https://metadata-static.plex.tv/5/gracenote/5d1323ab420a919f8f06b84c6426f801.jpg"
+          },
+          {
+            "alt": "Avengers: Endgame",
+            "type": "snapshot",
+            "url": "https://metadata-static.plex.tv/c/gracenote/c2ec474fd2df8e8df02643a619b418ba.jpg"
+          },
+          {
+            "alt": "Avengers: Endgame",
+            "type": "background",
+            "url": "https://metadata-static.plex.tv/3/gracenote/3dd7a20b98b8bca870786f5fcd017386.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}
