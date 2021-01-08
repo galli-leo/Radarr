@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace NzbDrone.Core.Notifications.Plex.Server
@@ -6,7 +6,7 @@ namespace NzbDrone.Core.Notifications.Plex.Server
     public class PlexSectionItem
     {
         [JsonProperty("ratingKey")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Title { get; set; }
     }

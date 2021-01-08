@@ -71,7 +71,7 @@ namespace NzbDrone.Core.Notifications.Plex.Server
             CheckForError(response);
         }
 
-        public void UpdateMovie(int metadataId, PlexServerSettings settings)
+        public void UpdateMovie(string metadataId, PlexServerSettings settings)
         {
             var resource = $"library/metadata/{metadataId}/refresh";
             var request = BuildRequest(resource, HttpMethod.PUT, settings);
@@ -116,7 +116,7 @@ namespace NzbDrone.Core.Notifications.Plex.Server
                        .Preferences;
         }
 
-        public int? GetMetadataId(int sectionId, string imdbId, string language, PlexServerSettings settings)
+        public string GetMetadataId(int sectionId, string imdbId, string language, PlexServerSettings settings)
         {
             var guid = $"com.plexapp.agents.imdb://{imdbId}?lang={language}";
             var resource = $"library/sections/{sectionId}/all?guid={System.Web.HttpUtility.UrlEncode(guid)}";
