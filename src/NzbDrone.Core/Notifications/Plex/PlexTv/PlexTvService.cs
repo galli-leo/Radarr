@@ -93,6 +93,8 @@ namespace NzbDrone.Core.Notifications.Plex.PlexTv
                                  .AddQueryParam("context[device][platform]", "Windows")
                                  .AddQueryParam("context[device][platformVersion]", "7")
                                  .AddQueryParam("context[device][version]", BuildInfo.Version.ToString())
+                                 .AddQueryParam("includeFields", "title,type,year,ratingKey")
+                                 .AddQueryParam("includeElements", "Guid")
                                  .AddQueryParam("sort", "watchlistedAt:desc")
                                  .AddQueryParam("type", PlexMediaType.Movie.ToString("d"));
 
