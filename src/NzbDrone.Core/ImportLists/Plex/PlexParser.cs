@@ -35,12 +35,17 @@ namespace NzbDrone.Core.ImportLists.Plex
 
             foreach (var item in items)
             {
-                var tmdbIdString = item.Guids.Find((guid) => guid.Id.StartsWith("tmdb://")).Id.Replace("tmdb://", "");
+                var tmdbIdString = item.Guids?.Find((guid) => guid.Id.StartsWith("tmdb://"))?.Id.Replace("tmdb://", "");
+                var tmdbId = 0;
+                if (tmdbIdString.IsNotNullOrWhiteSpace())
+                {
+                    tmdbId = int.Parse(tmdbIdString);
+                }
 
                 movies.AddIfNotNull(new ImportListMovie()
                 {
-                    ImdbId = item.Guids.Find((guid) => guid.Id.StartsWith("imdb://")).Id.Replace("imdb://", ""),
-                    TmdbId = int.Parse(tmdbIdString),
+                    ImdbId = item.Guids?.Find((guid) => guid.Id.StartsWith("imdb://"))?.Id.Replace("imdb://", ""),
+                    TmdbId = tmdbId,
                     Title = item.Title,
                     Year = item.Year
                 });
