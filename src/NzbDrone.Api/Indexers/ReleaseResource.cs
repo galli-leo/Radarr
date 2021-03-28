@@ -103,7 +103,7 @@ namespace NzbDrone.Api.Indexers
                 Title = releaseInfo.Title,
                 Languages = parsedMovieInfo.Languages,
                 Year = parsedMovieInfo.Year,
-                MovieTitle = parsedMovieInfo.MovieTitle,
+                MovieTitle = parsedMovieInfo.PrimaryMovieTitle,
                 Approved = model.Approved,
                 TemporarilyRejected = model.TemporarilyRejected,
                 Rejected = model.Rejected,
