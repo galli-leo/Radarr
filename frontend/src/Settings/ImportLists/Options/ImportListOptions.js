@@ -68,19 +68,31 @@ function ImportListOptions(props) {
               >
                 <FormLabel>{translate('CleanLibraryLevel')}</FormLabel>
 
-                <FormInputGroup
-                  type={inputTypes.SELECT}
-                  name="listSyncLevel"
-                  values={cleanLibraryLevelOptions}
-                  helpText={translate('ListSyncLevelHelpText')}
-                  helpTextWarning={settings.listSyncLevel.value === 'removeAndDelete' ? translate('ListSyncLevelHelpTextWarning') : undefined}
-                  onChange={onInputChange}
-                  {...settings.listSyncLevel}
-                />
-              </FormGroup>
-            </Form>
-        }
-      </FieldSet>
+              <FormInputGroup
+                type={inputTypes.SELECT}
+                name="listSyncLevel"
+                values={cleanLibraryLevelOptions}
+                helpText={translate('ListSyncLevelHelpText')}
+                helpTextWarning={settings.listSyncLevel.value === 'removeAndDelete' ? translate('ListSyncLevelHelpTextWarning') : undefined}
+                onChange={onInputChange}
+                {...settings.listSyncLevel}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <FormLabel>{translate('CleanLibraryTags')}</FormLabel>
+
+              <FormInputGroup
+                type={inputTypes.TAG}
+                name="cleanLibraryTags"
+                helpText={translate('TagsHelpText')}
+                {...settings.cleanLibraryTags}
+                onChange={onInputChange}
+              />
+            </FormGroup>
+          </Form>
+      }
+    </FieldSet>
   );
 }
 

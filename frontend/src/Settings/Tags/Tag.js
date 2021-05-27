@@ -57,6 +57,7 @@ class Tag extends Component {
       notificationIds,
       restrictionIds,
       importListIds,
+      isCleanLibraryTag,
       movieIds
     } = this.props;
 
@@ -70,6 +71,7 @@ class Tag extends Component {
       notificationIds.length ||
       restrictionIds.length ||
       importListIds.length ||
+      isCleanLibraryTag ||
       movieIds.length
     );
 
@@ -120,6 +122,13 @@ class Tag extends Component {
                     {importListIds.length} list{importListIds.length > 1 && 's'}
                   </div>
               }
+
+              {
+                !!isCleanLibraryTag &&
+                  <div>
+                    CleanLibraryTag
+                  </div>
+              }
             </div>
         }
 
@@ -138,6 +147,7 @@ class Tag extends Component {
           notificationIds={notificationIds}
           restrictionIds={restrictionIds}
           importListIds={importListIds}
+          isCleanLibraryTag={isCleanLibraryTag}
           isOpen={isDetailsModalOpen}
           onModalClose={this.onDetailsModalClose}
           onDeleteTagPress={this.onDeleteTagPress}
@@ -165,6 +175,7 @@ Tag.propTypes = {
   restrictionIds: PropTypes.arrayOf(PropTypes.number).isRequired,
   importListIds: PropTypes.arrayOf(PropTypes.number).isRequired,
   movieIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+  isCleanLibraryTag: PropTypes.bool.isRequired,
   onConfirmDeleteTag: PropTypes.func.isRequired
 };
 
@@ -173,6 +184,7 @@ Tag.defaultProps = {
   notificationIds: [],
   restrictionIds: [],
   importListIds: [],
+  isCleanLibraryTag: false,
   movieIds: []
 };
 
