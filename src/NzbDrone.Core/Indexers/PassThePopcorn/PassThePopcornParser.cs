@@ -85,7 +85,7 @@ namespace NzbDrone.Core.Indexers.PassThePopcorn
                         flags |= IndexerFlags.G_Scene;
                     }
 
-                    if (torrent.Container == "Other")
+                    if (torrent.Quality == "Other")
                     {
                         flags |= IndexerFlags.PTP_Other;
                     }
