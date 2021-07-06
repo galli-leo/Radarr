@@ -44,7 +44,7 @@ namespace NzbDrone.Core.DecisionEngine.Specifications
                 if (foundTerms.Empty())
                 {
                     var terms = string.Join(", ", requiredTerms);
-                    _logger.Debug("[{0}] does not contain one of the required terms: {1}", title, terms); //TODO: Add matched flags
+                    _logger.Debug("Title [{0}] and release flags [{1}] do not contain one of the required terms: {2}", title, flags, terms);
                     return Decision.Reject("Does not contain one of the required terms: {0}", terms);
                 }
             }
@@ -57,7 +57,7 @@ namespace NzbDrone.Core.DecisionEngine.Specifications
                 if (foundTerms.Any())
                 {
                     var terms = string.Join(", ", foundTerms);
-                    _logger.Debug("[{0}] contains these ignored terms: {1}", title, terms);
+                    _logger.Debug("Title [{0}] or release flags [{1}] contain these ignored terms: {2}", title, flags, terms);
                     return Decision.Reject("Contains these ignored terms: {0}", terms); //TODO: Add matched flags
                 }
             }
