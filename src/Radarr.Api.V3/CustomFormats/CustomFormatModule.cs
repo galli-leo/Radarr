@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentValidation;
+using NzbDrone.Common.Extensions;
+using NzbDrone.Core.Annotations;
 using NzbDrone.Core.CustomFormats;
 using Radarr.Http;
 
@@ -20,7 +23,29 @@ namespace Radarr.Api.V3.CustomFormats
             SharedValidator.RuleFor(c => c.Name).NotEmpty();
             SharedValidator.RuleFor(c => c.Name)
                 .Must((v, c) => !_formatService.All().Any(f => f.Name == c && f.Id != v.Id)).WithMessage("Must be unique.");
-            SharedValidator.RuleFor(c => c.Specifications).NotEmpty();
+            SharedValidator.RuleFor(c => c).Custom((customFormat, context) =>
+            {
+                if (!customFormat.Specifications.Any())
+                {
+                    context.AddFailure("Must contain at least one Condition");
+                }
+
+                if (customFormat.Specifications.Any(s => s.Name.IsNullOrWhiteSpace()))
+                {
+                    context.AddFailure("Condition name(s) cannot be empty or consist of only spaces");
+                }
+
+                foreach (var specification in customFormat.Specifications)
+                {
+                    foreach (var field in specification.Fields.Where(f => (FieldType)Enum.Parse(typeof(FieldType), f.Type, true) == FieldType.Textbox))
+                    {
+                        if (specification.Name.IsNotNullOrWhiteSpace() && ((string)field.Value).IsNullOrWhiteSpace())
+                        {
+                            context.AddFailure(string.Format("'{0}' of condition '{1}' cannot be empty or consist of only spaces", field.Label, specification.Name));
+                        }
+                    }
+                }
+            });
 
             GetResourceAll = GetAll;
 
