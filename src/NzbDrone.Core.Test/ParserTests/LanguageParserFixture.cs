@@ -198,6 +198,25 @@ namespace NzbDrone.Core.Test.ParserTests
             result.Languages.Should().BeEquivalentTo(Language.Unknown);
         }
 
+        [TestCase("Movie.Title.1994.1080p.UA.XviD")]
+        [TestCase("Movie.Title.1994.1080p.UKR.XviD")]
+        [TestCase("Movie.Title.1994.1080p.2xUKR.XviD")]
+        public void should_parse_language_ukrainian(string postTitle)
+        {
+            var result = Parser.Parser.ParseMovieTitle(postTitle, true);
+
+            result.Languages.Should().BeEquivalentTo(Language.Ukrainian);
+        }
+
+        [TestCase("Movie.Title.1994.H.265.[UKR_ENG]")]
+        [TestCase("Movie.Title.1994.UKR/ENG.1080p")]
+        public void should_parse_language_ukrainian_multi(string postTitle)
+        {
+            var result = Parser.Parser.ParseMovieTitle(postTitle, true);
+
+            result.Languages.Should().Contain(Language.Ukrainian);
+        }
+
         [TestCase("Movie.Title.1994.Vietnamese.1080p.XviD-LOL")]
         public void should_parse_language_vietnamese(string postTitle)
         {
