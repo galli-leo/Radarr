@@ -156,6 +156,8 @@ namespace NzbDrone.Core.Test.ParserTests
 
         [TestCase("Movie.Title.1994.Bulgarian.1080p.XviD-LOL")]
         [TestCase("Movie.Title.1994.BGAUDIO.1080p.XviD-LOL")]
+        [TestCase("Movie.Title.1994.BG.AUDIO.1080p.XviD-LOL")]
+        [TestCase("Movie.Title.1994.BG.ENG.RU.AUDIO.1080p.XviD-LOL")]
         public void should_parse_language_bulgarian(string postTitle)
         {
             var result = Parser.Parser.ParseMovieTitle(postTitle, true);
